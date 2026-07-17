@@ -25,8 +25,11 @@ all of them: `GUIDE.md` in this repo.
 
 1. Read `~/.save-radar/config.json`. If it is missing or `handle` is `"YOUR_HANDLE"`, ask the user
    for their Instagram handle and which saved collections to pull (default: `["all-posts"]`, i.e.
-   everything). Collection slugs come from the collection's URL:
-   `instagram.com/<handle>/saved/<slug>/`. Write the config:
+   everything). A collection entry is everything after `/saved/` in the collection's URL — for
+   `all-posts` that's just `"all-posts"`; named folders include a numeric id, e.g.
+   `instagram.com/<handle>/saved/hooks/17922350565369274/` → `"hooks/17922350565369274"`.
+   To list their folders, navigate the debug Chrome to `instagram.com/<handle>/saved/` and read the
+   `a[href*="/saved/"]` links. Write the config:
 
 ```json
 {

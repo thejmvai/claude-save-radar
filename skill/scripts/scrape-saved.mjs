@@ -209,7 +209,7 @@ function parseOg(text) {
     scrapedUser: USER || null,
     collection: args.url
       ? ((String(args.url).match(/\/saved\/([^/]+)/) || [])[1] || "custom")
-      : String(args.collection || "all-posts"),
+      : String(args.collection || "all-posts").split("/")[0],
     count: reels.length,
     reels,
   };

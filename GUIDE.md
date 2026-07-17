@@ -95,7 +95,7 @@ Then type:
 run save-radar
 ```
 
-Claude asks for your Instagram handle and which saved collections to pull. "All posts" is the default. If you keep saves in named collections (the folders you see on your Saved page), give it those instead. The collection name in the config is the slug from the collection URL: `instagram.com/yourhandle/saved/THIS-PART/`.
+Claude asks for your Instagram handle and which saved collections to pull. "All posts" is the default. If you keep saves in named folders (the collections you see on your Saved page), give it those instead. Just tell Claude the folder names, it reads the exact URLs from your Saved page itself.
 
 Then it runs the whole pipeline: scrape, log to CSV, download, transcribe, analyze, render. When it finishes it opens your report.
 

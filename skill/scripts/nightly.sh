@@ -53,9 +53,10 @@ fi
 WORKLISTS=""
 for c in $COLLECTIONS; do
   echo "→ scraping collection: $c"
+  wname="$(echo "$c" | tr "/" "-")"
   if node "$SCRIPTS_DIR/scrape-saved.mjs" --user="$HANDLE" --collection="$c" --max="$MAX" \
-       --out="$OUT/worklists/worklist-$c.json"; then
-    WORKLISTS="$WORKLISTS,$OUT/worklists/worklist-$c.json"
+       --out="$OUT/worklists/worklist-$wname.json"; then
+    WORKLISTS="$WORKLISTS,$OUT/worklists/worklist-$wname.json"
   else
     echo "  ⚠ scrape failed for $c (soft-block or logged-out browser?) — continuing"
   fi

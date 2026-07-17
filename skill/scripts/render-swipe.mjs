@@ -188,7 +188,7 @@ function verifyRefs(html, baseDir) {
 }
 
 // CLI
-if (import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+if (import.meta.url === new URL(`file://${fs.realpathSync(process.argv[1])}`).href) {
   const [dsPath, outPath] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   if (!dsPath || !outPath) { console.error("usage: node render-swipe.mjs <dataset.json> <out.html>"); process.exit(1); }
   const ds = JSON.parse(fs.readFileSync(dsPath, "utf8"));

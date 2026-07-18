@@ -2,7 +2,7 @@
 
 This guide takes you from nothing to a system where every Instagram post you save gets logged into a spreadsheet and analyzed in a report, automatically, at 12 AM every night.
 
-It assumes zero setup. No Claude Code, no developer tools, nothing. If you already have some of this, skip that part.
+It assumes you are starting from zero: no Claude Code installed yet, no developer tools, no browser setup. Each part below installs one piece. If you already have a piece, skip that part.
 
 **What you need before starting:** a Mac, an Instagram account, and a Claude subscription (Pro or Max, from [claude.ai](https://claude.ai)). Claude Code is included in those plans. Total setup time is about 20 minutes, and most of that is waiting for installs.
 

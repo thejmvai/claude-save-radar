@@ -8,6 +8,7 @@ The Save button is where good content goes to die. You save a reel, you never lo
 - **A breakdown of every reel**: the hook, the format, the full script (transcribed locally), and why it works.
 - **A swipe-file report**: one dark HTML page that groups your saves by hook archetype and leads with the patterns across everything you saved, plus 5 replicable plays.
 - **A nightly automation**: new saves get captured at 12:00 AM while you sleep.
+- **Optional Notion sync**: mirror the log into a Notion database that updates itself on every run. Off by default, two config fields to turn on ([GUIDE.md](GUIDE.md), Part 6).
 
 Everything runs on your own machine through your own logged-in browser. Nothing is uploaded anywhere. It is read-only against Instagram.
 

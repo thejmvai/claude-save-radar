@@ -125,6 +125,23 @@ Want a different time? `bash install-automation.sh --hour=7 --minute=30` runs it
 
 ---
 
+## Part 6 (optional): mirror your log into Notion
+
+If you live in Notion, save-radar can push the CSV into a Notion database and keep it updated. Every run (including the 12 AM one) adds new posts and refreshes existing rows, so the table always matches your log. Skip this part entirely if you do not use Notion.
+
+**Step 1. Create a Notion integration.** Go to [notion.so/my-integrations](https://www.notion.so/my-integrations), click "New integration", pick the Internal type, give it a name like "save-radar", and copy the secret it shows you. That secret is a password: paste it only into the config file in step 3, nowhere else.
+
+**Step 2. Give it a home.** Create a page in Notion where you want the table to live (for example a page called "Swipe File"). On that page, open the ••• menu, choose Connections, and add the integration you just created. Copy the page's link (Share, then Copy link).
+
+**Step 3. Add both to your config.** Open `~/.save-radar/config.json` in any editor and fill in the two empty fields:
+
+```json
+"notionToken": "paste the integration secret here",
+"notionParentPage": "paste the page link here"
+```
+
+That is it. On the next run, save-radar creates an "Instagram Saved Posts" database on that page with every post as a row: date, folder, creator, likes, comments, hook type, hook, format, why it works, and a link back to the post. From then on it stays in sync by itself. You can also trigger it any time by telling Claude "sync save-radar to Notion".
+
 ## Troubleshooting
 
 | Problem | Fix |

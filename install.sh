@@ -19,7 +19,9 @@ if [ ! -f "$CONFIG_DIR/config.json" ]; then
   "max": 30,
   "out": "~/.save-radar/out",
   "chromeProfile": "~/.save-radar-chrome",
-  "model": ""
+  "model": "",
+  "notionToken": "",
+  "notionParentPage": ""
 }
 EOF
   echo "✓ config created: $CONFIG_DIR/config.json (Claude fills in your handle on first run)"

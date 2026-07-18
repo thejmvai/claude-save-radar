@@ -38,9 +38,13 @@ all of them: `GUIDE.md` in this repo.
   "max": 30,
   "out": "~/.save-radar/out",
   "chromeProfile": "~/.save-radar-chrome",
-  "model": ""
+  "model": "",
+  "notionToken": "",
+  "notionParentPage": ""
 }
 ```
+
+   `notionToken` + `notionParentPage` are OPTIONAL (leave empty to skip Notion entirely — see Step 7).
 
 2. Check the debug browser: `curl -s --max-time 3 http://localhost:9222/json/version`. If that
    fails, give the user this command and STOP until they say it's running and they're logged in:
@@ -103,6 +107,19 @@ node <skill>/scripts/render-swipe.mjs "$OUT/swipe-saved.json" "$OUT/swipe-file.h
 The renderer self-verifies every image ref and exits 2 on any broken one — that's a STOP: fix the
 frame path and re-render. Then `open "$OUT/swipe-file.html"` and report: how many new posts were
 logged, the synthesis, the plays, and any partials.
+
+## Step 5b — optional Notion mirror (only if configured or the user asks)
+
+```
+node <skill>/scripts/sync-notion.mjs --csv="$OUT/saved-posts.csv"
+```
+
+Exits quietly if `notionToken`/`notionParentPage` aren't set. When set, the first run creates an
+"Instagram Saved Posts" database under the user's parent page, later runs upsert by shortcode —
+the nightly job calls this too, so the Notion table stays continuously in sync with the CSV.
+If the user ASKS to enable it: walk them through creating an Internal integration at
+notion.so/my-integrations, connecting a page to it (page ••• menu → Connections), then have them
+paste the token + page URL into the config themselves (never echo the token into chat output).
 
 ## Step 6 — offer the 12 AM automation (once)
 

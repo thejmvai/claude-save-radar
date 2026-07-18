@@ -91,4 +91,8 @@ PROMPT="$(sed "s|__OUT__|$OUT|g" "$SCRIPTS_DIR/nightly-breakdown-prompt.md")"
 # --- 6. fill the CSV analysis columns + re-render the report ----------------
 node "$SCRIPTS_DIR/log-csv.mjs" update --csv="$OUT/saved-posts.csv" --swipe="$OUT/swipe-saved.json"
 node "$SCRIPTS_DIR/render-swipe.mjs" "$OUT/swipe-saved.json" "$OUT/swipe-file.html" || fail "report render failed (broken image ref)"
+
+# --- 7. optional: mirror the CSV into Notion (no-op unless configured) -------
+node "$SCRIPTS_DIR/sync-notion.mjs" --csv="$OUT/saved-posts.csv" || echo "  ⚠ notion sync failed — CSV and report are still good"
+
 echo "✓ nightly complete — $NEW new post(s) logged, report at $OUT/swipe-file.html"
